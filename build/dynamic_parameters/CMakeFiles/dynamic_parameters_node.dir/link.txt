@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/dynamic_parameters_node.dir/nodes/server.cpp.o  -o /home/oguz/robot-control/hw2/robot-control/devel/lib/dynamic_parameters/dynamic_parameters_node 
