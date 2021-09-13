@@ -1,0 +1,26 @@
+<launch>
+	<!-- When calling the launch file you can provide the .urdf file that you want to look at as a parameter.
+	Example: roslaunch your_pkg_name inspect_urdf.launch model:='$(find your_pkg_name)/path/to/your_urdf.urdf' -->
+	
+	<arg name="model_config" default="$(find one_dof_arm)/urdf/ppend.urdf"/>
+	<arg name="rvizconfig" default="$(find one_dof_arm)/rviz/urdf.rviz" />
+	
+	<param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model_config)" />
+	  <!-- Start Gazebo. -->
+	<param name="/use_sim_time" value="false"/>
+
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+	<!-- Spawn a robot into Gazebo -->
+	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(arg model_config) -urdf -z 0.05 -model one_dof"/>
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch" >
+		<arg name="world_name" value="worlds/empty_world.world"/>
+	</include>
+
+	<node name="OneDofArm_DynamicParameters" pkg="dynamic_parameters" type="server.py"/>
+
+</launch>
+

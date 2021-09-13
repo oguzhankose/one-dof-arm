@@ -1,0 +1,8 @@
+<launch>
+	<!-- When calling the launch file you can provide the .urdf file that you want to look at as a parameter.
+	Example: roslaunch your_pkg_name inspect_urdf.launch model:='$(find your_pkg_name)/path/to/your_urdf.urdf' -->
+	<node name="arm_control_node" pkg="one_dof_arm" type="control_arm.py" output="screen"/>
+	<node name="ref_publisher_node" pkg="one_dof_arm" type="ref_publisher.py" output="screen"/>
+	<node name = "rqt_gui_node" pkg = "rqt_gui" type = "rqt_gui" respawn = "false" output = "screen" args = "--perspective-file $(find one_dof_arm)/rqt/arm_rqt_gui.perspective"/>
+</launch>
+

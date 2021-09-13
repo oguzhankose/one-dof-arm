@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+<sdf version="1.5">
+  <model name="ppend">
+    <link name="end_link">
+      <pose>-0.03309 0.15931 0.6394 1.5708 0 0</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>2e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+        <pose>0.00323 -0.04129 0.10447 0 0 0</pose>
+      </inertial>
+      <visual name="Suzanne">
+        <pose>0.003225630149245262 -0.04128962755203247 0.10446774959564209 -1.5707963705062866 -0.0 0.0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://ppend/meshes/Suzanne.dae</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="dummy_link">
+      <pose>-0.01676 0.05476 0.089 0 0 0</pose>
+      <inertial>
+        <mass>50.0</mass>
+        <inertia>
+          <ixx>12.5678</ixx>
+          <ixy>0.40987</ixy>
+          <ixz>0.12657</ixz>
+          <iyy>12.21951</iyy>
+          <iyz>-2.43533</iyz>
+          <izz>1.71693</izz>
+        </inertia>
+        <pose>0.01676 -0.05476 -0.089 0 0 0</pose>
+      </inertial>
+    </link>
+    <link name="root">
+      <pose>-0.01464 0.0536 0.0803 0 0 0</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+        <pose>0 0 0 0 0 0</pose>
+      </inertial>
+      <collision name="Base.000">
+        <pose>-0.01032 -0.01632 -0.08093 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://ppend/meshes/Base.001.dae</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="Base">
+        <pose>0.014639133587479591 -0.05360156297683716 -0.0803011953830719 0.0 -0.0 0.0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://ppend/meshes/Base.dae</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="bear_link">
+      <pose>-0.03534 0.19726 1.38324 1.5708 0 0</pose>
+      <inertial>
+        <mass>2.0</mass>
+        <inertia>
+          <ixx>1.22159</ixx>
+          <ixy>-0.03965</ixy>
+          <ixz>-0.00672</ixz>
+          <iyy>1.19396</iyy>
+          <iyz>-0.18344</iyz>
+          <izz>0.03565</izz>
+        </inertia>
+        <pose>0.03534 -1.38324 0.19726 0 0 0</pose>
+      </inertial>
+      <collision name="Pendulum.000">
+        <pose>0.04111 -1.37972 0.22758 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://ppend/meshes/Pendulum.001.dae</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="Pendulum">
+        <pose>0.035336535423994064 -1.3832378387451172 0.1972559690475464 -1.5707963705062866 -0.0 0.0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://ppend/meshes/Pendulum.dae</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint type="revolute" name="end_joint">
+      <parent>bear_link</parent>
+      <child>end_link</child>
+      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+      <axis>
+        <xyz>0 0 1.0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>2e-05</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+      </axis>
+    </joint>
+    <joint type="fixed" name="dummy_link">
+      <parent>root</parent>
+      <child>dummy_link</child>
+      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+    </joint>
+    <joint type="revolute" name="bear_joint">
+      <parent>root</parent>
+      <child>bear_link</child>
+      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+      <axis>
+        <xyz>0 0 1.0</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
+          <effort>1000.0</effort>
+          <velocity>0</velocity>
+        </limit>
+      </axis>
+    </joint>
+  </model>
+</sdf>

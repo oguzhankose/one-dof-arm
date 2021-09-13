@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+  <robot name="ppend">
+
+    <link name="bear_link">
+      <inertial>
+        <origin xyz="0.03534 -1.38324 0.19726" rpy="0 0 0"/>
+        <mass value="2.0"/>
+        <inertia ixx="1.22159" ixy="-0.03965" ixz="-0.00672" iyy="1.19396" iyz="-0.18344" izz="0.03565"/>
+      </inertial>
+      <visual name="Pendulum">
+        <origin xyz="0.03534 -1.38324 0.19726" rpy="-1.5708 0 0"/>
+        <geometry>
+          <mesh filename="package://one_dof_arm/meshes/dae/Pendulum.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="Pendulum.000">
+        <origin xyz="0.04111 -1.37972 0.22758" rpy="-1.5708 0 0"/>
+        <geometry>
+          <mesh filename="package://one_dof_arm/meshes/dae/Pendulum.001.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="dummy_link">
+      <inertial>
+        <origin xyz="0.01676 -0.05476 -0.089" rpy="0 0 0"/>
+        <mass value="50.0"/>
+        <inertia ixx="12.5678" ixy="0.40987" ixz="0.12657" iyy="12.21951" iyz="-2.43533" izz="1.71693"/>
+      </inertial>
+    </link>
+
+    <link name="end_link">
+      <inertial>
+        <origin xyz="0.00323 -0.04129 0.10447" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="2e-05" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="2e-05"/>
+      </inertial>
+      <visual name="Suzanne">
+        <origin xyz="0.00323 -0.04129 0.10447" rpy="-1.5708 0 0"/>
+        <geometry>
+          <mesh filename="package://one_dof_arm/meshes/dae/Suzanne.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="root">
+      <visual name="Base">
+        <origin xyz="0.01464 -0.0536 -0.0803" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://one_dof_arm/meshes/dae/Base.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="Base.000">
+        <origin xyz="-0.01032 -0.01632 -0.08093" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://one_dof_arm/meshes/dae/Base.001.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="bear_joint" type="revolute">
+      <origin xyz="-0.0207 0.14365 1.30294" rpy="1.5708 0 0"/>
+      <parent link="root"/>
+      <child link="bear_link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.5708" upper="1.5708" effort="1000.0" velocity="0"/>
+    </joint>
+
+    <joint name="dummy_link" type="fixed">
+      <origin xyz="-0.00212 0.00116 0.0087" rpy="0 0 0"/>
+      <parent link="root"/>
+      <child link="dummy_link"/>
+    </joint>
+
+    <joint name="end_joint" type="revolute">
+      <origin xyz="0.00225 -0.74383 0.03795" rpy="0 0 0"/>
+      <parent link="bear_link"/>
+      <child link="end_link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="0" upper="2e-05" effort="0" velocity="0"/>
+    </joint>
+
+  </robot>
