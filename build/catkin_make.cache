@@ -1,0 +1,2 @@
+dynamic_parameters:one_dof_arm
+-DCATKIN_DEVEL_PREFIX=/home/oguz/robot-control/hw2/robot-control/devel -DCMAKE_INSTALL_PREFIX=/home/oguz/robot-control/hw2/robot-control/install -G Unix Makefiles

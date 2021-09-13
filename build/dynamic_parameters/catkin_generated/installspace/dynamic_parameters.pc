@@ -1,0 +1,8 @@
+prefix=/home/oguz/robot-control/hw2/robot-control/install
+
+Name: dynamic_parameters
+Description: Description of dynamic_parameters
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/oguz/robot-control/hw2/robot-control/devel
+
+Name: one_dof_arm
+Description: Description of one_dof_arm
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: dynamic_reconfigure

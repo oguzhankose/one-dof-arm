@@ -1,0 +1,17 @@
+\subsubsection usage Usage
+\verbatim
+<node name="one_dof_arm" pkg="dynamic_tutorials" type="one_dof_arm">
+  <param name="controller_type" type="int" value="0" />
+  <param name="reference_type" type="int" value="0" />
+  <param name="ref_angle" type="double" value="0.0" />
+  <param name="sin_ref_gain" type="double" value="30.0" />
+  <param name="sin_ref_f" type="double" value="0.2" />
+  <param name="ss_Kp" type="double" value="37.5" />
+  <param name="ss_Ki" type="double" value="0.0" />
+  <param name="ss_Kd" type="double" value="2.8" />
+  <param name="tr_Kp" type="double" value="28.5" />
+  <param name="tr_Ki" type="double" value="0.3" />
+  <param name="tr_Kd" type="double" value="1.3" />
+</node>
+\endverbatim
+
